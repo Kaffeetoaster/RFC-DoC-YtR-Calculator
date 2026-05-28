@@ -1,0 +1,107 @@
+:root {
+            --civ-blue-bg: rgba(25, 45, 85, 0.92);
+            --civ-border: #4a6fa5;
+            --civ-white: #e0e0e0;
+            --civ-gold: #ffcc66; 
+            --civ-glow-blue: #0099ff; /* Softer light blue instead of bright cyan */
+            --civ-list-bg: rgba(5, 15, 30, 0.5);
+            --civ-pedia-window-bg: #726868;
+            --civ-pedia-bg: #bc9c80;
+        }
+
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: var(--civ-pedia-bg);
+	
+}
+
+.app {
+	max-width: 720px;
+	margin: 20px auto;
+	padding: 24px;
+}
+
+h1, h2 {
+	margin: 0 0 10px;
+    text-align: center;
+}
+
+.controls,
+.result-box,
+.description {
+	background: var(--civ-blue-bg);
+    border: 2px solid var(--civ-border);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+	padding: 16px;
+	margin-bottom: 16px;
+    color: var(--civ-white);
+}
+
+
+
+.controls {
+	display: grid;
+	gap: 12px;
+}
+
+.game-speed-group {
+	margin: 0;
+    background: var(--civ-list-bg);
+    border: 1px solid var(--civ-border);
+    padding: 10px 12px;
+	border-radius: 8px;
+    color: var(--civ-white);
+	display: grid;
+	gap: 8px;
+}
+
+.game-speed-group legend {
+	padding: 0 6px;
+	font-weight: 600;
+}
+
+.radio-option {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 400;
+}
+
+.radio-option input {
+	margin: 0;
+}
+
+label {
+	font-weight: 600;
+}
+
+input {
+	font: inherit;
+	padding: 10px 12px;
+	border-radius: 8px;
+    background-color: var(--civ-list-bg);
+    color: var(--civ-white);
+    border: 1px solid var(--civ-border);
+}
+
+
+
+
+pre {
+	margin: 0;
+	white-space: pre-wrap;
+	word-break: break-word;
+    padding: 10px 12px;
+	border-radius: 8px;
+    background-color: var(--civ-list-bg);
+    color: var(--civ-white);
+    border: 1px solid var(--civ-border);
+}
+

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RFC DoC YtT Calculator</title>
+    <link rel="icon" type=image/ico href="icon.ico">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="app">
+		<h1>Year to Turns Calculator</h1>
+        <div class="description">
+            <p>This calculator determines the number of turns it takes to reach a specific year in RFC Dawn of Civilization, based on the selected game speed and starting year.</p>
+            <p>To use the calculator, select your desired game speed and enter your starting year (the default is -3000). Then, input one or more target years between -3000 and 2025, separated by commas, semicolons or spaces. The results will show the number of turns it takes to reach each target year from the starting year.</p>
+            <p>Please note that it is not always possible to determine the exact turn. In such cases, the two closest turns are displayed.</p>
+        </div>
+		<div class="controls">
+			<fieldset class="game-speed-group">
+				<legend>Game speed</legend>
+				<label class="radio-option">
+					<input type="radio" name="gameSpeed" value="GAMESPEED_MARATHON">
+					<span>Marathon</span>
+				</label>
+				<label class="radio-option">
+					<input type="radio" name="gameSpeed" value="GAMESPEED_EPIC">
+					<span>Epic</span>
+				</label>
+				<label class="radio-option">
+					<input type="radio" name="gameSpeed" value="GAMESPEED_NORMAL" checked>
+					<span>Normal</span>
+				</label>
+			</fieldset>
+            
+            <label for="startYearInput">Start year</label>
+            <input id="startYearInput" value="-3000" placeholder="e.g. -3000">
+            <label for="yearInput">Year(s)</label>
+			<input id="yearInput" placeholder="Values from -3000 to 2025, separated by commas, semicolons or spaces, are allowed.">
+		</div>
+		<section class="result-box">
+			<h2>Results</h2>
+			<pre id="result">The number of turns will be shown here.</pre>
+		</section>
+	</main>
+
+
+	<script type="module" src="script.js" defer></script>
+</body>
+</html>

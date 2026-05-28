@@ -1,0 +1,176 @@
+{
+  "GAMESPEED_MARATHON": [
+    {
+      "iMonthIncrement": "120",
+      "iTurnsPerIncrement": "90"
+    },
+    {
+      "iMonthIncrement": "96",
+      "iTurnsPerIncrement": "100"
+    },
+    {
+      "iMonthIncrement": "60",
+      "iTurnsPerIncrement": "140"
+    },
+    {
+      "iMonthIncrement": "48",
+      "iTurnsPerIncrement": "200"
+    },
+    {
+      "iMonthIncrement": "36",
+      "iTurnsPerIncrement": "100"
+    },
+    {
+      "iMonthIncrement": "36",
+      "iTurnsPerIncrement": "240"
+    },
+    {
+      "iMonthIncrement": "24",
+      "iTurnsPerIncrement": "90"
+    },
+    {
+      "iMonthIncrement": "24",
+      "iTurnsPerIncrement": "100"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "200"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "30"
+    },
+    {
+      "iMonthIncrement": "6",
+      "iTurnsPerIncrement": "180"
+    },
+    {
+      "iMonthIncrement": "6",
+      "iTurnsPerIncrement": "90"
+    },
+    {
+      "iMonthIncrement": "3",
+      "iTurnsPerIncrement": "60"
+    },
+    {
+      "iMonthIncrement": "3",
+      "iTurnsPerIncrement": "180"
+    }
+  ],
+  "GAMESPEED_EPIC": [
+    {
+      "iMonthIncrement": "240",
+      "iTurnsPerIncrement": "45"
+    },
+    {
+      "iMonthIncrement": "180",
+      "iTurnsPerIncrement": "60"
+    },
+    {
+      "iMonthIncrement": "120",
+      "iTurnsPerIncrement": "60"
+    },
+    {
+      "iMonthIncrement": "96",
+      "iTurnsPerIncrement": "100"
+    },
+    {
+      "iMonthIncrement": "72",
+      "iTurnsPerIncrement": "50"
+    },
+    {
+      "iMonthIncrement": "72",
+      "iTurnsPerIncrement": "75"
+    },
+    {
+      "iMonthIncrement": "60",
+      "iTurnsPerIncrement": "90"
+    },
+    {
+      "iMonthIncrement": "48",
+      "iTurnsPerIncrement": "50"
+    },
+    {
+      "iMonthIncrement": "24",
+      "iTurnsPerIncrement": "100"
+    },
+    {
+      "iMonthIncrement": "24",
+      "iTurnsPerIncrement": "15"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "90"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "45"
+    },
+    {
+      "iMonthIncrement": "6",
+      "iTurnsPerIncrement": "30"
+    },
+    {
+      "iMonthIncrement": "6",
+      "iTurnsPerIncrement": "90"
+    }
+  ],
+  "GAMESPEED_NORMAL": [
+    {
+      "iMonthIncrement": "360",
+      "iTurnsPerIncrement": "30"
+    },
+    {
+      "iMonthIncrement": "300",
+      "iTurnsPerIncrement": "20"
+    },
+    {
+      "iMonthIncrement": "240",
+      "iTurnsPerIncrement": "20"
+    },
+    {
+      "iMonthIncrement": "180",
+      "iTurnsPerIncrement": "40"
+    },
+    {
+      "iMonthIncrement": "120",
+      "iTurnsPerIncrement": "100"
+    },
+    {
+      "iMonthIncrement": "120",
+      "iTurnsPerIncrement": "90"
+    },
+    {
+      "iMonthIncrement": "60",
+      "iTurnsPerIncrement": "20"
+    },
+    {
+      "iMonthIncrement": "60",
+      "iTurnsPerIncrement": "50"
+    },
+    {
+      "iMonthIncrement": "36",
+      "iTurnsPerIncrement": "50"
+    },
+    {
+      "iMonthIncrement": "24",
+      "iTurnsPerIncrement": "50"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "20"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "60"
+    },
+    {
+      "iMonthIncrement": "12",
+      "iTurnsPerIncrement": "40"
+    },
+    {
+      "iMonthIncrement": "6",
+      "iTurnsPerIncrement": "10"
+    }
+  ]
+}
