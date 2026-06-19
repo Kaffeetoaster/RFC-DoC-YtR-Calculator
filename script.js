@@ -140,14 +140,14 @@ function validateStartYear(input) {
     const [minTurns, maxTurns] = get_turn(value, gameSpeed, gameSpeedsData);
     
     console.log(`Start year turns: ${minTurns} to ${maxTurns}`);
-    return [minTurns === maxTurns, minTurns];
+    return [minTurns === maxTurns, maxTurns];
     
 }
 
 function execute_YearToTurn_calculation() {
     const years = validateInputYears(ToInput.value);
-    const [isValid, MinStartYearTurn] = validateStartYear(FromInput.value);
-    if (MinStartYearTurn === null) {
+    const [isValid, MaxStartYearTurn] = validateStartYear(FromInput.value);
+    if (MaxStartYearTurn === null) {
         result.textContent = `Invalid start year: "${FromInput.value}". Please enter an integer between -3000 and 2025.`;
         return;
     }
@@ -166,9 +166,9 @@ function execute_YearToTurn_calculation() {
             const [minTurns, maxTurns] = get_turn(value, gameSpeed, gameSpeedsData);
             
             if (minTurns === maxTurns) {
-                res += `Turns it takes from year ${FromInput.value} to year ${value}: ${minTurns - MinStartYearTurn}\n`;
+                res += `Turns it takes from year ${FromInput.value} to year ${value}: ${minTurns - MaxStartYearTurn}\n`;
             } else {
-                res += `Turns it takes from year ${FromInput.value} to year ${value}: between ${minTurns- MinStartYearTurn} and  ${maxTurns- MinStartYearTurn}\n`;
+                res += `Turns it takes from year ${FromInput.value} to year ${value}: between ${minTurns- MaxStartYearTurn} and  ${maxTurns- MaxStartYearTurn}\n`;
             }
         }
     }
