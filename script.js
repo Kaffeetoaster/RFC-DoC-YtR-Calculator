@@ -1,5 +1,43 @@
 
+const modes = {
+    YearToTurn: {
+        labels: [
+            "Start Year",
+            "Year(s)"
+        ],
+        values: [
+            "-3000",
+            ""
+        ],
+        placeholders: [
+            "e.g. -3000",
+            "Values from -3000 to 2025, separated by commas, semicolons or spaces, are allowed.",
+            "The number of turns will be shown here."
+        ],
+        executeCalculation: execute_YearToTurn_calculation,
+        sanitizeFromInput: sanitizeStartYearInput,
+        sanitizeToInput: sanitizeYearInput
+    },
 
+    TurnToYear: {
+        labels: [
+            "Start Turn",
+            "Turn(s)"
+        ],
+        values: [
+            "0",
+            ""
+        ],
+        placeholders: [
+            "e.g. 0",
+            "Values > 0, separated by commas, semicolons or spaces, are allowed.",
+            "The year(s) will be shown here."
+        ],
+        executeCalculation: execute_TurnToYear_calculation,
+        sanitizeFromInput: sanitizeStartTurnInput,
+        sanitizeToInput: sanitizeTurnInput
+    }
+};
 
 
 async function load_game_speeds() {
@@ -39,62 +77,86 @@ function get_turn(year, gameSpeed, gameSpeedsData) {
 }
 
 // loading game speeds data from json file
-
 const gameSpeedsData = await load_game_speeds();
 console.log(gameSpeedsData);
 
-const yearInput = document.getElementById("yearInput");
-const startYearInput = document.getElementById("startYearInput");
+const ToInput = document.getElementById("ToInput");
+const FromInput = document.getElementById("FromInput");
 const result = document.getElementById("result");
+const FromLabel = document.querySelector('label[for="FromInput"]');
+const ToLabel = document.querySelector('label[for="ToInput"]');
 const gamespeedRadios = document.querySelectorAll('input[name="gameSpeed"]');
+const calculationTypeRadios = document.querySelectorAll('input[name="calculationType"]');
+
+let currentValue = document.querySelector('input[name="calculationType"]:checked').value;
+let currentMode = modes[currentValue];
+updateUI();
+
+calculationTypeRadios.forEach(radio => {
+    radio.addEventListener("change", () => {
+        currentValue = document.querySelector('input[name="calculationType"]:checked').value;
+        currentMode = modes[currentValue];
+        updateUI();
+    });
+})
+function updateUI() {
+    FromLabel.textContent = currentMode.labels[0];
+    ToLabel.textContent = currentMode.labels[1];
+    FromInput.value = currentMode.values[0];
+    ToInput.value = currentMode.values[1];
+    FromInput.placeholder = currentMode.placeholders[0];
+    ToInput.placeholder = currentMode.placeholders[1];
+    result.textContent = currentMode.placeholders[2];
+}
 
 
-
-function validateInputs(input) {
+function validateInputYears(input) {
     const parts = input
         .split(/[,\s;]+/)
         .filter(Boolean);
-
     const results = [];
-
     for (const part of parts) {
         const isInt = /^-?\d+$/.test(part);
-
         let value = null;
         let valid = false;
-
         if (isInt) {
             value = Number(part);
             valid = value >= -3000 && value <= 2025;
         }
-
         results.push({
             value: isInt ? Number(part) : part,
             valid
         });
     }
-
     return results;
 }
-
 
 function validateStartYear(input) {
     const value = Number(input);
     const gameSpeed = document.querySelector('input[name="gameSpeed"]:checked').value;
+    if (get_turn(value, gameSpeed, gameSpeedsData) === null) {
+        return [false, null];
+    }
     const [minTurns, maxTurns] = get_turn(value, gameSpeed, gameSpeedsData);
+    
     console.log(`Start year turns: ${minTurns} to ${maxTurns}`);
     return [minTurns === maxTurns, minTurns];
+    
 }
 
-function execute_calculation() {
-    const years = validateInputs(yearInput.value);
-    const [isValid, StartYearTurn] = validateStartYear(startYearInput.value);
-    const gameSpeed = document.querySelector('input[name="gameSpeed"]:checked').value;
-    
-    if (!isValid) {
-        result.textContent = `Invalid start year: "${startYearInput.value}".`;
+function execute_YearToTurn_calculation() {
+    const years = validateInputYears(ToInput.value);
+    const [isValid, MinStartYearTurn] = validateStartYear(FromInput.value);
+    if (MinStartYearTurn === null) {
+        result.textContent = `Invalid start year: "${FromInput.value}". Please enter an integer between -3000 and 2025.`;
         return;
     }
+    const gameSpeed = document.querySelector('input[name="gameSpeed"]:checked').value;
+    
+    // if (!isValid) {
+    //     result.textContent = `Invalid start year: "${FromInput.value}".`;
+    //     return;
+    // }
     let res = '';
     for (const { value, valid } of years) {
         if (!valid) {
@@ -102,10 +164,11 @@ function execute_calculation() {
         }
         else {
             const [minTurns, maxTurns] = get_turn(value, gameSpeed, gameSpeedsData);
+            
             if (minTurns === maxTurns) {
-                res += `Turns it takes from year ${startYearInput.value} to year ${value}: ${minTurns - StartYearTurn}\n`;
+                res += `Turns it takes from year ${FromInput.value} to year ${value}: ${minTurns - MinStartYearTurn}\n`;
             } else {
-                res += `Turns it takes from year ${startYearInput.value} to year ${value}: between ${minTurns- StartYearTurn} and  ${maxTurns- StartYearTurn}\n`;
+                res += `Turns it takes from year ${FromInput.value} to year ${value}: between ${minTurns- MinStartYearTurn} and  ${maxTurns- MinStartYearTurn}\n`;
             }
         }
     }
@@ -113,34 +176,50 @@ function execute_calculation() {
 
 }
 
+function execute_TurnToYear_calculation() {
+}
+
+
+// input sanitization functions
+function sanitizeYearInput() {
+    ToInput.value = ToInput.value.replace(/[^0-9,\s;-]/g, '');
+}
+function sanitizeStartYearInput() {
+    FromInput.value = FromInput.value.replace(/[^0-9-]/g, '');
+}
+
+function sanitizeStartTurnInput() {
+    FromInput.value = FromInput.value.replace(/[^0-9]/g, '');
+}
+function sanitizeTurnInput() {
+    ToInput.value = ToInput.value.replace(/[^0-9,\s;]/g, '');
+}
 
 
 
-yearInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-        execute_calculation();
-    }
+
+// Event listeners
+
+ToInput.addEventListener("input", (event) => {
+    currentMode.sanitizeToInput();
+    currentMode.executeCalculation();
 });
-
-yearInput.addEventListener("input", (event) => {
-    execute_calculation();
-});
-
-yearInput.addEventListener("input", () => {
-    yearInput.value = yearInput.value.replace(/[^0-9,\s;-]/g, '');
-});
-
-startYearInput.addEventListener("input", () => {
-    startYearInput.value = startYearInput.value.replace(/[^0-9-]/g, '');
-});
-startYearInput.addEventListener("input", () => {
-    execute_calculation();
+FromInput.addEventListener("input", () => {
+    currentMode.sanitizeFromInput();
+    currentMode.executeCalculation();
 });
 
 gamespeedRadios.forEach(radio => {
     radio.addEventListener("change", () => {
-        execute_calculation();
+        currentMode.executeCalculation();
     });
+})
+
+
+ToInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        currentMode.executeCalculation();
+    }
 });
 
 

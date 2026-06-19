@@ -51,18 +51,33 @@ h1, h2 {
 	gap: 12px;
 }
 
-.game-speed-group {
+.game-speed-group{
 	margin: 0;
-    background: var(--civ-list-bg);
-    border: 1px solid var(--civ-border);
-    padding: 10px 12px;
+  background: var(--civ-list-bg);
+  border: 1px solid var(--civ-border);
+  padding: 10px 12px;
 	border-radius: 8px;
-    color: var(--civ-white);
+  color: var(--civ-white);
 	display: grid;
 	gap: 8px;
 }
 
-.game-speed-group legend {
+.calculation-type {
+  margin: 0;
+  background: var(--civ-list-bg);
+  border: 1px solid var(--civ-border);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--civ-white);
+  display: none;/*flex; */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+}
+
+
+.game-speed-group legend, .calculation-type legend {
 	padding: 0 6px;
 	font-weight: 600;
 }
@@ -80,6 +95,8 @@ h1, h2 {
 
 label {
 	font-weight: 600;
+	display: block;
+	text-align: center;
 }
 
 input {

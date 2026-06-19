@@ -16,6 +16,17 @@
             <p>Please note that it is not always possible to determine the exact turn. In such cases, the two closest turns are displayed.</p>
         </div>
 		<div class="controls">
+			<fieldset class="calculation-type">
+				<legend>Calculation type</legend>
+				<label class="radio-option">
+					<input type="radio" name="calculationType" value="YearToTurn" checked>
+					<span>Calculate year to turns</span>
+				</label>
+				<label class="radio-option">
+					<input type="radio" name="calculationType" value="TurnToYear">
+					<span>Calculate turns to year</span>
+				</label>
+			</fieldset>
 			<fieldset class="game-speed-group">
 				<legend>Game speed</legend>
 				<label class="radio-option">
@@ -32,10 +43,10 @@
 				</label>
 			</fieldset>
             
-            <label for="startYearInput">Start year</label>
-            <input id="startYearInput" value="-3000" placeholder="e.g. -3000">
-            <label for="yearInput">Year(s)</label>
-			<input id="yearInput" placeholder="Values from -3000 to 2025, separated by commas, semicolons or spaces, are allowed.">
+            <label for="FromInput">Start Year</label>
+            <input id="FromInput" value="-3000" placeholder="e.g. -3000">
+            <label for="ToInput">Year(s)</label>
+			<input id="ToInput" placeholder="Values from -3000 to 2025, separated by commas, semicolons or spaces, are allowed.">
 		</div>
 		<section class="result-box">
 			<h2>Results</h2>
